@@ -1,18 +1,19 @@
-package com.itseasy.mega.article.entity;
+package com.itseasy.mega.post.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Getter
-public class Article {
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Post {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
