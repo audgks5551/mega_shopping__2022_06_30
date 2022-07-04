@@ -28,7 +28,7 @@ public class PostController {
                 .body(postForm.getBody())
                 .build();
 
-        postService.createPost(postDto);
+        postDto = postService.createPost(postDto);
 
         return String.format("redirect:/edit/%d", postDto.getId());
     }
@@ -40,7 +40,7 @@ public class PostController {
                 .id(postId)
                 .build();
 
-        postService.detailPost(postDto);
+        postDto = postService.detailPost(postDto);
 
         model.addAttribute("post", postDto);
         return "post/post_detail";
