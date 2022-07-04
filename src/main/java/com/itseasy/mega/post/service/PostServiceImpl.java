@@ -7,6 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.util.Optional;
+
 
 @Service
 @RequiredArgsConstructor
@@ -26,5 +29,15 @@ public class PostServiceImpl implements PostService {
         postRepository.save(post);
 
         postDto.setId(post.getId());
+    }
+
+    @Override
+    public void detailPost(PostDto postDto) throws Exception {
+        Post post = postRepository.findById(postDto.getId())
+                .orElseThrow(Exception::new);
+
+        postDto.setTitle(post.getTitle());
+        postDto.setBody(post.getBody());
+        postDto.setSubTitle(post.getSubTitle());
     }
 }

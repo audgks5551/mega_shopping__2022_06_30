@@ -5,10 +5,8 @@ import com.itseasy.mega.post.form.PostForm;
 import com.itseasy.mega.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -35,9 +33,16 @@ public class PostController {
         return String.format("redirect:/edit/%d", postDto.getId());
     }
 
-    @ResponseBody
     @GetMapping("/edit/{postId}")
-    public String detailPost(@PathVariable String postId) {
-        return String.format("%s번의 포스트가 생성되었습니다.", postId);
+    public String detailPost(@PathVariable Long postId, Model model) throws Exception {
+
+        PostDto postDto = PostDto.builder()
+                .id(postId)
+                .build();
+
+        postService.detailPost(postDto);
+
+        model.addAttribute("post", postDto);
+        return "post/post_detail";
     }
 }

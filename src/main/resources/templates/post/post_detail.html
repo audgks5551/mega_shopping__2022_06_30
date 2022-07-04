@@ -3,12 +3,16 @@
       layout:decorate="~{layouts/layout.html}">
 
     <head>
-        <title>edit</title>
+        <title>detail</title>
     </head>
 
     <body>
         <section layout:fragment="content">
-            <span>edit</span>
+
+            <span th:text="${post.title}">title</span>
+            <span th:text="${post.subTitle}">detail</span>
+            <span th:text="${post.body}">detail</span>
+
         </section>
     </body>
 
