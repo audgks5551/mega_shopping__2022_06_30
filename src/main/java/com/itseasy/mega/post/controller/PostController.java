@@ -5,7 +5,6 @@ import com.itseasy.mega.post.form.PostForm;
 import com.itseasy.mega.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
