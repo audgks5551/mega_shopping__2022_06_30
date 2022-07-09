@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+
+<head>
+    <title>edit</title>
+</head>
+
+<body>
+<section layout:fragment="content">
+    <div>
+        <form method="POST" th:action="@{/posts}" th:object="${postForm}">
+
+            <label th:for="*{title}">
+                <span>제목</span>
+            </label>
+            <input th:field="*{title}" type="text" placeholder="제목을 입력해주세요" />
+
+            <label th:for="*{subTitle}">
+                <span>부제목</span>
+            </label>
+            <input th:field="*{subTitle}" type="text" placeholder="부제목을 입력해주세요" />
+
+            <label th:for="*{body}">
+                <span>내용</span>
+            </label>
+            <input th:field="*{body}" type="text" placeholder="내용을 적어주세요" />
+
+            <button type="submit">등록하기</button>
+
+        </form>
+    </div>
+</section>
+</body>
+
+</html>

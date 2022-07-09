@@ -1,6 +1,7 @@
 package com.itseasy.mega.post.entity;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,10 +11,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Getter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Post {
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
