@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 @Transactional
@@ -66,7 +66,7 @@ public class MemberServiceTest {
     }
 
     @Test
-    public void 회원의_아이디가_중복_제거() {
+    public void 회원의_아이디_중복_제거() {
         // given
         MemberDto memberDto1 = new MemberDto(
                 "user1", "passwd1", "유저1", LocalDateTime.now(), LocalDateTime.now());
@@ -80,8 +80,7 @@ public class MemberServiceTest {
         /**
          * 데이터 무결성 위반 예외
          */
-        assertThatThrownBy(() -> memberService.create(memberDto2))
-                .isInstanceOf(DataIntegrityViolationException.class);
+        assertThrows(DataIntegrityViolationException.class, () -> memberService.create(memberDto2));
     }
 
     @Test
