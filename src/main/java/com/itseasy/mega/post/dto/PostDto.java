@@ -1,5 +1,6 @@
 package com.itseasy.mega.post.dto;
 
+import com.querydsl.core.annotations.QueryProjection;
 import lombok.*;
 
 @Getter
@@ -12,4 +13,10 @@ public class PostDto {
     private String title;
     private String subTitle;
     private String body;
+
+    @QueryProjection
+    public PostDto(String title, String subTitle) {
+        this.title = title;
+        this.subTitle = subTitle;
+    }
 }
